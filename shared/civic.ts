@@ -235,3 +235,25 @@ export function hasOfficialText(contest: Contest): boolean {
     contest.referendumConStatement
   );
 }
+
+export interface Officeholder {
+  name: string;
+  office: string;
+  parties: string[];
+}
+
+/** F8 is feature-flagged: when off, the client links to free lookup tools instead. */
+export type OfficeholdersResponse =
+  | { enabled: false }
+  | { enabled: true; byDivision: Record<string, Officeholder[]> };
+
+export const MAX_OCD_IDS = 25;
+
+export function isValidOcdId(id: string): boolean {
+  return id.length <= 200 && /^ocd-division\/country:[a-z]{2}(\/[a-z_]+:[a-z0-9_.~-]+)*$/i.test(id);
+}
+
+/** Sorted and de-duplicated, so the same set of districts always shares one CDN cache entry. */
+export function canonicalOcdIds(ids: string[]): string[] {
+  return [...new Set(ids)].sort();
+}

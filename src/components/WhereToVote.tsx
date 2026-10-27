@@ -1,6 +1,6 @@
 import { lazy, Suspense, useMemo, useState } from "react";
 import type { VoterInfo } from "../../shared/civic";
-import { addressLines, isOfficial, oneLineAddress, sourceNames, tidy } from "../lib/format";
+import { addressLines, formatMiles, isOfficial, oneLineAddress, sourceNames, tidy } from "../lib/format";
 import type { LatLng } from "../lib/geo";
 import {
   allLocations,
@@ -128,7 +128,7 @@ function LocationCard({ location: l }: { location: TypedLocation }) {
           </span>
           <h3 className="mt-1 font-semibold">{name}</h3>
         </div>
-        {l.miles !== undefined && <span className="text-sm font-medium text-slate-700">{t.vote.distance(l.miles.toFixed(1))}</span>}
+        {l.miles !== undefined && <span className="text-sm font-medium text-slate-700">{t.vote.distance(formatMiles(l.miles))}</span>}
       </div>
       <address className="not-italic text-slate-800">
         {addressLines(l.address).map((line) => (

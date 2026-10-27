@@ -1,6 +1,6 @@
 import { useEffect, useId, useMemo, useState } from "react";
 import type { VoterInfo } from "../../shared/civic";
-import { longDate, oneLineAddress, parseYmd, tidy, toYmd } from "../lib/format";
+import { formatMiles, longDate, oneLineAddress, parseYmd, tidy, toYmd } from "../lib/format";
 import type { LatLng } from "../lib/geo";
 import { downloadIcs, googleCalendarUrl, type CalendarEvent } from "../lib/ics";
 import { allLocations, distanceOrigin, withDistances, type LocationType } from "../lib/locations";
@@ -146,7 +146,7 @@ function PlanForm({
             {options.map((o) => (
               <option key={o.id} value={o.id}>
                 {tidy(o.address?.locationName || o.name)} – {oneLineAddress(o.address)}
-                {o.miles !== undefined ? ` (${t.vote.distance(o.miles.toFixed(1))})` : ""}
+                {o.miles !== undefined ? ` (${t.vote.distance(formatMiles(o.miles))})` : ""}
               </option>
             ))}
           </select>
@@ -197,7 +197,7 @@ function PlanForm({
 
 function to12h(time: string): string {
   const [h, m] = time.split(":").map(Number);
-  return new Date(2000, 0, 1, h, m).toLocaleTimeString("en-US", { hour: "numeric", minute: "2-digit" });
+  return new Date(2000, 0, 1, h, m).toLocaleTimeString(t.locale, { hour: "numeric", minute: "2-digit" });
 }
 
 function PlanCard({

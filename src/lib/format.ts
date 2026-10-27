@@ -1,4 +1,5 @@
 import type { CivicAddress, Source } from "../../shared/civic";
+import { t } from "../strings";
 
 /** Google sends some fields in ALL CAPS; title-case those for readability. */
 export function tidy(s: string | undefined): string {
@@ -23,7 +24,7 @@ export function oneLineAddress(a: CivicAddress | undefined): string {
 export function longDate(ymd: string): string {
   const d = parseYmd(ymd);
   if (!d) return ymd;
-  return d.toLocaleDateString("en-US", { weekday: "long", month: "long", day: "numeric", year: "numeric" });
+  return d.toLocaleDateString(t.locale, { weekday: "long", month: "long", day: "numeric", year: "numeric" });
 }
 
 export function parseYmd(ymd: string | undefined): Date | null {
@@ -55,4 +56,8 @@ export function safeUrl(url: string | undefined): string | null {
   } catch {
     return null;
   }
+}
+
+export function formatMiles(miles: number): string {
+  return miles.toLocaleString(t.locale, { minimumFractionDigits: 1, maximumFractionDigits: 1 });
 }

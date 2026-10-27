@@ -11,7 +11,7 @@ import { StatusMessage } from "./components/StatusMessage";
 import { fetchVoterInfo, LookupError } from "./lib/api";
 import type { LatLng } from "./lib/geo";
 import { useUrlState } from "./lib/url-state";
-import { t } from "./strings";
+import { initialLang, setLang, t, type Lang } from "./strings";
 
 type Lookup =
   | { kind: "idle" }
@@ -23,6 +23,9 @@ const NO_ELECTION_CODES: StatusCode[] = ["electionUnknown", "electionOver"];
 
 export default function App() {
   const [url, setUrl] = useUrlState();
+  const lang: Lang = url.lang ?? initialLang();
+  // Swap the active strings before anything below renders with them.
+  if (t.lang !== lang) setLang(lang);
   const [lookup, setLookup] = useState<Lookup>({ kind: "idle" });
   const [attempt, setAttempt] = useState(0);
   // Coordinates from "Use my location", kept in memory only, used to sort locations by distance.
@@ -53,7 +56,7 @@ export default function App() {
 
   const submitAddress = (address: string, coords: LatLng | null) => {
     setHere(coords);
-    setUrl({ address, electionId: undefined, tab: "vote", measure: undefined, view: undefined });
+    setUrl({ address, electionId: undefined, tab: "vote", measure: undefined, contest: undefined, view: undefined });
   };
 
   const data = lookup.kind === "ok" ? lookup.data : null;
@@ -102,7 +105,7 @@ export default function App() {
         url={url}
         setUrl={setUrl}
         here={here}
-        onChangeAddress={() => setUrl({ address: "", electionId: undefined, measure: undefined, tab: "vote" })}
+        onChangeAddress={() => setUrl({ address: "", electionId: undefined, measure: undefined, contest: undefined, tab: "vote" })}
       />
     );
   }
@@ -118,12 +121,25 @@ export default function App() {
             href="/"
             onClick={(e) => {
               e.preventDefault();
-              setUrl({ address: "", electionId: undefined, measure: undefined, view: undefined, tab: "vote" });
+              setUrl({ address: "", electionId: undefined, measure: undefined, contest: undefined, view: undefined, tab: "vote" });
             }}
             className="text-xl font-bold tracking-tight"
           >
             {t.appName}
           </a>
+          <button
+            type="button"
+            lang={t.language.switchLang}
+            aria-label={t.language.switchAria}
+            onClick={() => {
+              const next = t.language.switchLang;
+              setLang(next);
+              setUrl({ lang: next }, { replace: true });
+            }}
+            className="min-h-[44px] rounded-lg border border-white/60 px-3 text-sm font-semibold hover:bg-white/10"
+          >
+            {t.language.switchLabel}
+          </button>
         </div>
       </header>
       {data && url.view !== "privacy" && <NoticeBanner data={data} />}

@@ -23,19 +23,20 @@ export function MeasureDetail({
   const [summary, setSummary] = useState<ExplainResponse | null>(null);
   const [error, setError] = useState<StatusCode | null>(null);
   const [showText, setShowText] = useState(false);
+  const lang = t.lang;
 
   // The official text renders immediately; the AI summary loads after it.
   useEffect(() => {
     let cancelled = false;
     setSummary(null);
     setError(null);
-    fetchExplanation({ electionId, districtId: districtKey(contest), title, address })
+    fetchExplanation({ electionId, districtId: districtKey(contest), title, address, lang })
       .then((r) => !cancelled && setSummary(r))
       .catch((e) => !cancelled && setError(e instanceof LookupError ? e.code : "aiUnavailable"));
     return () => {
       cancelled = true;
     };
-  }, [contest, electionId, title, address]);
+  }, [contest, electionId, title, address, lang]);
 
   useEffect(() => {
     document.getElementById("measure-title")?.focus();

@@ -84,7 +84,7 @@ describe("/api/explain", () => {
     expect(await res.json()).toEqual({ available: false, reason: "noOfficialText" });
     // Read through our own cached /api/voterinfo, not Google directly.
     expect(String(fetchMock.mock.calls[0][0])).toMatch(/^https:\/\/x\.test\/api\/voterinfo\?/);
-    expect(res.headers.get("Netlify-Vary")).toBe("query=electionId|districtId|title");
+    expect(res.headers.get("Netlify-Vary")).toBe("query=electionId|districtId|title|lang");
     delete process.env.ANTHROPIC_API_KEY;
   });
 

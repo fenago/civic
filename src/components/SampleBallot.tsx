@@ -4,6 +4,7 @@ import { candidatesInOrder, contestKey, groupContests } from "../lib/ballot";
 import { tidy } from "../lib/format";
 import { loadJson, removeKey, saveJson } from "../lib/storage";
 import { t } from "../strings";
+import { CandidateHub } from "./CandidateHub";
 import { MeasureDetail } from "./MeasureDetail";
 import { SourceTag } from "./WhereToVote";
 
@@ -20,11 +21,15 @@ export function SampleBallot({
   address,
   openMeasure,
   onOpenMeasure,
+  openContest,
+  onOpenContest,
 }: {
   data: VoterInfo;
   address: string;
   openMeasure?: string;
   onOpenMeasure: (key: string | undefined) => void;
+  openContest?: string;
+  onOpenContest: (key: string | undefined) => void;
 }) {
   const electionId = data.election?.id ?? "unknown";
   const storageKey = marksKey(electionId, address);
@@ -51,6 +56,9 @@ export function SampleBallot({
       />
     );
   }
+
+  const race = openContest ? contests.find((c) => contestKey(c) === openContest && !isMeasure(c)) : undefined;
+  if (race) return <CandidateHub contest={race} onBack={() => onOpenContest(undefined)} />;
 
   const groups = groupContests(contests);
   const onlyOther = groups.length === 1 && groups[0].group === "other";
@@ -96,7 +104,12 @@ export function SampleBallot({
                       {isMeasure(c) ? (
                         <MeasureCard contest={c} selected={marks[key] ?? []} onChange={(v) => update(key, v)} onRead={() => onOpenMeasure(key)} />
                       ) : (
-                        <CandidateContest contest={c} selected={marks[key] ?? []} onChange={(v) => update(key, v)} />
+                        <CandidateContest
+                          contest={c}
+                          selected={marks[key] ?? []}
+                          onChange={(v) => update(key, v)}
+                          onResearch={() => onOpenContest(key)}
+                        />
                       )}
                     </li>
                   );
@@ -110,7 +123,17 @@ export function SampleBallot({
   );
 }
 
-function CandidateContest({ contest, selected, onChange }: { contest: Contest; selected: string[]; onChange: (v: string[]) => void }) {
+function CandidateContest({
+  contest,
+  selected,
+  onChange,
+  onResearch,
+}: {
+  contest: Contest;
+  selected: string[];
+  onChange: (v: string[]) => void;
+  onResearch: () => void;
+}) {
   const title = tidy(contestTitle(contest)) || t.ballot.untitled;
   const limit = contest.numberVotingFor;
   const over = limit !== undefined && Number(limit) > 0 && selected.length > Number(limit);
@@ -151,7 +174,14 @@ function CandidateContest({ contest, selected, onChange }: { contest: Contest; s
           {t.ballot.tooMany(limit!)}
         </p>
       )}
-      <SourceTag sources={contest.sources} />
+      <div className="no-print flex flex-wrap items-center justify-between gap-2">
+        {candidates.length > 0 && (
+          <button type="button" className="btn-secondary" onClick={onResearch}>
+            {t.ballot.research}
+          </button>
+        )}
+        <SourceTag sources={contest.sources} />
+      </div>
     </fieldset>
   );
 }

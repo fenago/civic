@@ -3,10 +3,11 @@ import type {
   Division,
   ElectionsResponse,
   ExplainResponse,
+  OfficeholdersResponse,
   StatusCode,
   VoterInfo,
 } from "../../shared/civic";
-import { normalizeAddress } from "../../shared/civic";
+import { canonicalOcdIds, normalizeAddress } from "../../shared/civic";
 
 export class LookupError extends Error {
   constructor(public code: StatusCode) {
@@ -38,11 +39,21 @@ export const fetchElections = () => getJson<ElectionsResponse>("/api/elections",
 export const fetchDivisions = (address: string) =>
   getJson<{ divisions: Division[] }>("/api/divisions", { address: normalizeAddress(address) });
 
-export const fetchExplanation = (p: { electionId: string; districtId: string; title: string; address: string }) =>
+export const fetchExplanation = (p: {
+  electionId: string;
+  districtId: string;
+  title: string;
+  address: string;
+  lang: "en" | "es";
+}) =>
   getJson<ExplainResponse>("/api/explain", {
-    // Parameter order is irrelevant to the CDN; only electionId, districtId and title form the key.
+    // Only electionId, districtId, title and lang form the CDN cache key; the address does not.
     electionId: p.electionId,
     districtId: p.districtId,
     title: p.title,
+    lang: p.lang,
     address: normalizeAddress(p.address),
   });
+
+export const fetchOfficeholders = (ocdIds: string[]) =>
+  getJson<OfficeholdersResponse>("/api/officeholders", { ocdIds: canonicalOcdIds(ocdIds).join(",") });

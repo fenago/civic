@@ -48,7 +48,13 @@ function measureDocument(contest: Contest): string {
 
 export class SummaryRefused extends Error {}
 
-export async function summarizeMeasure(contest: Contest): Promise<MeasureSummary> {
+const LANGUAGE_NOTE: Record<"en" | "es", string> = {
+  en: "",
+  // The system prompt stays identical across languages; the language instruction rides with the measure.
+  es: '\n\nWrite all four answers in clear, neutral U.S. Spanish (formal "usted"). If the official text doesn\'t answer a question, write "El texto oficial no lo dice."',
+};
+
+export async function summarizeMeasure(contest: Contest, lang: "en" | "es" = "en"): Promise<MeasureSummary> {
   // apiKey comes from ANTHROPIC_API_KEY. One attempt only: the function has a hard timeout,
   // and the voter already sees the official text while this loads.
   const client = new Anthropic({ timeout: 22_000, maxRetries: 0 });
@@ -66,7 +72,7 @@ export async function summarizeMeasure(contest: Contest): Promise<MeasureSummary
     messages: [
       {
         role: "user",
-        content: `<official_measure_text>\n${measureDocument(contest)}\n</official_measure_text>`,
+        content: `<official_measure_text>\n${measureDocument(contest)}\n</official_measure_text>${LANGUAGE_NOTE[lang]}`,
       },
     ],
   });

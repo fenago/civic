@@ -12,9 +12,9 @@ import {
 import { cachedJson, errorJson, logEvent, TTL } from "../lib/http";
 import { summarizeMeasure } from "../lib/summarize";
 
-// Only these three parameters form the CDN cache key, so every voter who sees
-// the same measure shares one summary. The address is needed only on a cache miss.
-const CACHE_KEY_PARAMS = ["electionId", "districtId", "title"];
+// Only these parameters form the CDN cache key, so every voter who sees the same
+// measure in the same language shares one summary. The address is needed only on a cache miss.
+const CACHE_KEY_PARAMS = ["electionId", "districtId", "title", "lang"];
 
 export default async (req: Request): Promise<Response> => {
   const params = new URL(req.url).searchParams;
@@ -22,6 +22,7 @@ export default async (req: Request): Promise<Response> => {
   const districtId = params.get("districtId") ?? "";
   const title = params.get("title") ?? "";
   const address = normalizeAddress(params.get("address") ?? "");
+  const lang = params.get("lang") === "es" ? "es" : "en";
 
   if (!isValidElectionId(electionId) || !title || title.length > 300 || districtId.length > 300) {
     return errorJson("badRequest", 400);
@@ -55,7 +56,7 @@ export default async (req: Request): Promise<Response> => {
   }
 
   try {
-    const summary = await summarizeMeasure(contest);
+    const summary = await summarizeMeasure(contest, lang);
     logEvent("explain", "success");
     const body: ExplainResponse = { available: true, ...summary };
     return cachedJson(body, TTL.day, CACHE_KEY_PARAMS);
