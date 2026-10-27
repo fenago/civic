@@ -5,6 +5,7 @@ import { tidy } from "../lib/format";
 import { loadJson, removeKey, saveJson } from "../lib/storage";
 import { t } from "../strings";
 import { CandidateHub } from "./CandidateHub";
+import { ExternalLink } from "./ExternalLink";
 import { MeasureDetail } from "./MeasureDetail";
 import { SourceTag } from "./WhereToVote";
 
@@ -70,7 +71,14 @@ export function SampleBallot({
       </h2>
       <p className="text-slate-700">{t.ballot.intro}</p>
       {contests.length === 0 ? (
-        <p className="card">{t.ballot.noContests}</p>
+        <div className="card space-y-3">
+          <p>{t.ballot.noContests}</p>
+          {officialBallotUrl(data) && (
+            <ExternalLink href={officialBallotUrl(data)} className="btn-secondary">
+              {t.ballot.officialSite}
+            </ExternalLink>
+          )}
+        </div>
       ) : (
         <>
           <p className="text-sm text-slate-700">{t.ballot.marksNote}</p>
@@ -121,6 +129,14 @@ export function SampleBallot({
       )}
     </section>
   );
+}
+
+/** Most local official page first: that's where sample ballots usually live. */
+function officialBallotUrl(data: VoterInfo): string | undefined {
+  const state = data.state?.[0];
+  const local = state?.local_jurisdiction?.electionAdministrationBody;
+  const body = state?.electionAdministrationBody;
+  return local?.ballotInfoUrl || local?.electionInfoUrl || body?.electionInfoUrl || body?.ballotInfoUrl;
 }
 
 function CandidateContest({
