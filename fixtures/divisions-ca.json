@@ -1,0 +1,43 @@
+{
+  "normalizedInput": {
+    "line1": "2000 Broadway",
+    "city": "Oakland",
+    "state": "CA",
+    "zip": "94612",
+    "addressLine": [
+      "2000 Broadway"
+    ]
+  },
+  "divisions": {
+    "ocd-division/country:us/state:ca/county:alameda/council_district:5": {
+      "name": "Alameda County CA Board of Supervisors District 5"
+    },
+    "ocd-division/country:us/state:ca/place:oakland": {
+      "name": "Oakland city"
+    },
+    "ocd-division/country:us/state:ca/place:oakland/council_district:3": {
+      "name": "Oakland CA city council district 3"
+    },
+    "ocd-division/country:us/state:ca/cd:12": {
+      "name": "California's 12th congressional district"
+    },
+    "ocd-division/country:us/state:ca/sldl:18": {
+      "name": "California Assembly district 18"
+    },
+    "ocd-division/country:us/state:ca/sldu:7": {
+      "name": "California State Senate district 7"
+    },
+    "ocd-division/country:us": {
+      "name": "United States"
+    },
+    "ocd-division/country:us/state:ca/county:alameda/school_district:oakland_unified": {
+      "name": "oakland unified"
+    },
+    "ocd-division/country:us/state:ca/county:alameda": {
+      "name": "Alameda County"
+    },
+    "ocd-division/country:us/state:ca": {
+      "name": "California"
+    }
+  }
+}

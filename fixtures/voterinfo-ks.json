@@ -1,0 +1,197 @@
+{
+  "election": {
+    "id": "12000",
+    "name": "2026 General Midterm Election",
+    "electionDay": "2026-11-03",
+    "ocdDivisionId": "ocd-division/country:us"
+  },
+  "normalizedInput": {
+    "line1": "1263 Pacific Avenue",
+    "addressLine": [
+      "1263 Pacific Avenue"
+    ],
+    "city": "Kansas City",
+    "state": "KS",
+    "zip": "66102"
+  },
+  "earlyVoteSites": [
+    {
+      "address": {
+        "locationName": "WYANDOTTE COUNTY ELECTION OFFICE",
+        "line1": "850 State Ave",
+        "addressLine": [
+          "850 State Ave"
+        ],
+        "city": "Kansas City",
+        "state": "KS",
+        "zip": "66101"
+      },
+      "pollingHours": "Sat, Oct 17: 10 am - 4 pm\nMon, Oct 19: 8 am - 6 pm\nTue, Oct 20: 8 am - 6 pm\nWed, Oct 21: 8 am - 6 pm\nThu, Oct 22: 8 am - 6 pm\nFri, Oct 23: 8 am - 6 pm\nSat, Oct 24: 10 am - 4 pm\nMon, Oct 26: 8 am - 6 pm\nTue, Oct 27: 8 am - 6 pm\nWed, Oct 28: 8 am - 6 pm\nThu, Oct 29: 8 am - 6 pm\nFri, Oct 30: 8 am - 6 pm\nSat, Oct 31: 10 am - 4 pm\nMon, Nov 2: 8 am - 12 pm",
+      "latitude": 39.116743764477853,
+      "longitude": -94.631981737746273,
+      "sources": [
+        {
+          "name": "Voting Information Project",
+          "official": true
+        }
+      ]
+    },
+    {
+      "address": {
+        "locationName": "EISENHOWER RECREATION CENTER",
+        "line1": "2801 N. 72ND ST",
+        "addressLine": [
+          "2801 N. 72ND ST"
+        ],
+        "city": "KANSAS CITY",
+        "state": "KS"
+      },
+      "pollingHours": "Sat, Oct 17: 10 am - 4 pm\nMon, Oct 19: 10 am - 6 pm\nTue, Oct 20: 10 am - 6 pm\nWed, Oct 21: 10 am - 6 pm\nThu, Oct 22: 10 am - 6 pm\nFri, Oct 23: 10 am - 6 pm\nMon, Oct 26: 10 am - 6 pm\nTue, Oct 27: 10 am - 6 pm\nWed, Oct 28: 10 am - 6 pm\nThu, Oct 29: 10 am - 6 pm\nFri, Oct 30: 10 am - 6 pm\nSat, Oct 31: 10 am - 4 pm",
+      "latitude": 39.13830271670794,
+      "longitude": -94.743421867894625,
+      "sources": [
+        {
+          "name": "Voting Information Project",
+          "official": true
+        }
+      ]
+    },
+    {
+      "address": {
+        "locationName": "BONNER SPRINGS LIBRARY",
+        "line1": "201 N Nettleton Ave",
+        "addressLine": [
+          "201 N Nettleton Ave"
+        ],
+        "city": "Bonner Springs",
+        "state": "KS",
+        "zip": "66012"
+      },
+      "pollingHours": "Sat, Oct 17: 10 am - 4 pm\nMon, Oct 19: 10 am - 6 pm\nTue, Oct 20: 10 am - 6 pm\nWed, Oct 21: 10 am - 6 pm\nThu, Oct 22: 10 am - 6 pm\nFri, Oct 23: 10 am - 6 pm\nMon, Oct 26: 10 am - 6 pm\nTue, Oct 27: 10 am - 6 pm\nWed, Oct 28: 10 am - 6 pm\nThu, Oct 29: 10 am - 6 pm\nFri, Oct 30: 10 am - 6 pm\nSat, Oct 31: 10 am - 4 pm",
+      "latitude": 39.060536998299135,
+      "longitude": -94.883572200354408,
+      "sources": [
+        {
+          "name": "Voting Information Project",
+          "official": true
+        }
+      ]
+    }
+  ],
+  "dropOffLocations": [
+    {
+      "address": {
+        "locationName": "WYANDOTTE COUNTY ELECTION OFFICE",
+        "line1": "850 STATE AVE.",
+        "addressLine": [
+          "850 STATE AVE."
+        ],
+        "city": "KANSAS CITY",
+        "state": "KS",
+        "zip": "66101"
+      },
+      "pollingHours": "Wed, Oct 14: 10:00 am - 11:59 pm\nThu, Oct 15: 12:00 am - 11:59 pm\nFri, Oct 16: 12:00 am - 11:59 pm\nSat, Oct 17: 12:00 am - 11:59 pm\nSun, Oct 18: 12:00 am - 11:59 pm\nMon, Oct 19: 12:00 am - 11:59 pm\nTue, Oct 20: 12:00 am - 11:59 pm\nWed, Oct 21: 12:00 am - 11:59 pm\nThu, Oct 22: 12:00 am - 11:59 pm\nFri, Oct 23: 12:00 am - 11:59 pm\nSat, Oct 24: 12:00 am - 11:59 pm\nSun, Oct 25: 12:00 am - 11:59 pm\nMon, Oct 26: 12:00 am - 11:59 pm\nTue, Oct 27: 12:00 am - 11:59 pm\nWed, Oct 28: 12:00 am - 11:59 pm\nThu, Oct 29: 12:00 am - 11:59 pm\nFri, Oct 30: 12:00 am - 11:59 pm\nSat, Oct 31: 12:00 am - 11:59 pm\nSun, Nov 1: 12:00 am - 11:59 pm\nMon, Nov 2: 12:00 am - 11:59 pm\nTue, Nov 3: 12 am - 7 pm",
+      "latitude": 39.116743764477853,
+      "longitude": -94.631981737746273,
+      "sources": [
+        {
+          "name": "Voting Information Project",
+          "official": true
+        }
+      ]
+    },
+    {
+      "address": {
+        "locationName": "WYANDOTTE WEST LIBRARY",
+        "line1": "1737 N. 82ND ST.",
+        "addressLine": [
+          "1737 N. 82ND ST."
+        ],
+        "city": "KANSAS CITY",
+        "state": "KS",
+        "zip": "66112"
+      },
+      "pollingHours": "Wed, Oct 14: 10:00 am - 11:59 pm\nThu, Oct 15: 12:00 am - 11:59 pm\nFri, Oct 16: 12:00 am - 11:59 pm\nSat, Oct 17: 12:00 am - 11:59 pm\nSun, Oct 18: 12:00 am - 11:59 pm\nMon, Oct 19: 12:00 am - 11:59 pm\nTue, Oct 20: 12:00 am - 11:59 pm\nWed, Oct 21: 12:00 am - 11:59 pm\nThu, Oct 22: 12:00 am - 11:59 pm\nFri, Oct 23: 12:00 am - 11:59 pm\nSat, Oct 24: 12:00 am - 11:59 pm\nSun, Oct 25: 12:00 am - 11:59 pm\nMon, Oct 26: 12:00 am - 11:59 pm\nTue, Oct 27: 12:00 am - 11:59 pm\nWed, Oct 28: 12:00 am - 11:59 pm\nThu, Oct 29: 12:00 am - 11:59 pm\nFri, Oct 30: 12:00 am - 11:59 pm\nSat, Oct 31: 12:00 am - 11:59 pm\nSun, Nov 1: 12:00 am - 11:59 pm\nMon, Nov 2: 12:00 am - 11:59 pm\nTue, Nov 3: 12 am - 7 pm",
+      "latitude": 39.124880282825437,
+      "longitude": -94.769058811386216,
+      "sources": [
+        {
+          "name": "Voting Information Project",
+          "official": true
+        }
+      ]
+    },
+    {
+      "address": {
+        "locationName": "EDWARDSVILLE CITY HALL",
+        "line1": "690 S. 4TH ST.",
+        "addressLine": [
+          "690 S. 4TH ST."
+        ],
+        "city": "EDWARDSVILLE",
+        "state": "KS",
+        "zip": "66111"
+      },
+      "pollingHours": "Wed, Oct 14: 10:00 am - 11:59 pm\nThu, Oct 15: 12:00 am - 11:59 pm\nFri, Oct 16: 12:00 am - 11:59 pm\nSat, Oct 17: 12:00 am - 11:59 pm\nSun, Oct 18: 12:00 am - 11:59 pm\nMon, Oct 19: 12:00 am - 11:59 pm\nTue, Oct 20: 12:00 am - 11:59 pm\nWed, Oct 21: 12:00 am - 11:59 pm\nThu, Oct 22: 12:00 am - 11:59 pm\nFri, Oct 23: 12:00 am - 11:59 pm\nSat, Oct 24: 12:00 am - 11:59 pm\nSun, Oct 25: 12:00 am - 11:59 pm\nMon, Oct 26: 12:00 am - 11:59 pm\nTue, Oct 27: 12:00 am - 11:59 pm\nWed, Oct 28: 12:00 am - 11:59 pm\nThu, Oct 29: 12:00 am - 11:59 pm\nFri, Oct 30: 12:00 am - 11:59 pm\nSat, Oct 31: 12:00 am - 11:59 pm\nSun, Nov 1: 12:00 am - 11:59 pm\nMon, Nov 2: 12:00 am - 11:59 pm\nTue, Nov 3: 12 am - 7 pm",
+      "latitude": 39.056215769100035,
+      "longitude": -94.82191517112048,
+      "sources": [
+        {
+          "name": "Voting Information Project",
+          "official": true
+        }
+      ]
+    },
+    {
+      "address": {
+        "locationName": "BONNER SPRINGS LIBRARY",
+        "line1": "201 N Nettleton Ave",
+        "addressLine": [
+          "201 N Nettleton Ave"
+        ],
+        "city": "Bonner Springs",
+        "state": "KS",
+        "zip": "66012"
+      },
+      "pollingHours": "Wed, Oct 14: 10:00 am - 11:59 pm\nThu, Oct 15: 12:00 am - 11:59 pm\nFri, Oct 16: 12:00 am - 11:59 pm\nSat, Oct 17: 12:00 am - 11:59 pm\nSun, Oct 18: 12:00 am - 11:59 pm\nMon, Oct 19: 12:00 am - 11:59 pm\nTue, Oct 20: 12:00 am - 11:59 pm\nWed, Oct 21: 12:00 am - 11:59 pm\nThu, Oct 22: 12:00 am - 11:59 pm\nFri, Oct 23: 12:00 am - 11:59 pm\nSat, Oct 24: 12:00 am - 11:59 pm\nSun, Oct 25: 12:00 am - 11:59 pm\nMon, Oct 26: 12:00 am - 11:59 pm\nTue, Oct 27: 12:00 am - 11:59 pm\nWed, Oct 28: 12:00 am - 11:59 pm\nThu, Oct 29: 12:00 am - 11:59 pm\nFri, Oct 30: 12:00 am - 11:59 pm\nSat, Oct 31: 12:00 am - 11:59 pm\nSun, Nov 1: 12:00 am - 11:59 pm\nMon, Nov 2: 12:00 am - 11:59 pm\nTue, Nov 3: 12 am - 7 pm",
+      "latitude": 39.060536998299135,
+      "longitude": -94.883572200354408,
+      "sources": [
+        {
+          "name": "Voting Information Project",
+          "official": true
+        }
+      ]
+    }
+  ],
+  "state": [
+    {
+      "name": "Kansas",
+      "electionAdministrationBody": {
+        "name": "Secretary of State",
+        "electionInfoUrl": "https://sos.ks.gov/elections/elections.html",
+        "electionRegistrationUrl": "https://www.kdor.ks.gov/Apps/VoterReg",
+        "electionRegistrationConfirmationUrl": "https://myvoteinfo.voteks.org/VoterView",
+        "votingLocationFinderUrl": "https://myvoteinfo.voteks.org/VoterView",
+        "ballotInfoUrl": "https://myvoteinfo.voteks.org/VoterView",
+        "electionRulesUrl": "https://sos.ks.gov/elections/voter-information.html",
+        "correspondenceAddress": {
+          "line1": "Memorial Hall, 1st Floor, 120 SW 10th Avenue",
+          "addressLine": [
+            "Memorial Hall, 1st Floor, 120 SW 10th Avenue"
+          ],
+          "city": "Topeka",
+          "state": "",
+          "zip": "66612-1594"
+        }
+      },
+      "sources": [
+        {
+          "name": "DemocracyWorks",
+          "official": false
+        }
+      ]
+    }
+  ],
+  "kind": "civicinfo#voterInfoResponse"
+}
